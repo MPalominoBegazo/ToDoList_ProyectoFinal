@@ -1,0 +1,11 @@
+.col s12{
+    align-items: center;
+    align-content: center;
+}
+
+ul li.checked {
+  background: #00796b;
+  color:aliceblue;
+  text-decoration: line-through;
+}
+
