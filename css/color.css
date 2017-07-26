@@ -4,8 +4,12 @@
 }
 
 ul li.checked {
-  background: #00796b;
+  background: #26a69a;
   color:aliceblue;
   text-decoration: line-through;
 }
 
+ul{ 
+  margin:0; 
+  padding:0; 
+}

@@ -1,6 +1,7 @@
 
-function Tareas(title) {
-  this.userId = 1
+function Tareas(title,id) {
+  this.id = id;
+  this.userId = 1;
   this.title = title;
   this.completed = false;
 
@@ -75,14 +76,21 @@ function ToDoList() {
   this.isChecked = function (event) {
     if (event.target.tagName === 'LI') {
       event.target.classList.toggle('checked');
+
+      /*for(var i in this.arrDatos){
+        if(this.arrDatos[i].id == event.id){
+          this.arrDatos.completed = true;
+        }
+      }*/
+
     }
 
   }
   this.mostrar = function (content) {
     var newLi = document.createElement('li');
-    var checkBox = cb = document.createElement("input");
+    var cb = document.createElement("input");
     cb.type = "checkbox";
-    cb.id = "c1";
+    //cb.id = "c1";
     cb.value = content;
     cb.checked = false;
 
@@ -96,19 +104,25 @@ function ToDoList() {
 
 
   }
+  this.limpiar=function(){
+    document.getElementById("Activity").value =  "";
+  }
 }
 
 var list = new ToDoList();
-
+var  id=11;
 
 listar();
 listas();
 var btnAdd = document.getElementById("btnActivity");
 btnAdd.onclick = function add() {
+ 
   var content = document.getElementById("Activity").value;
   list.mostrar(content);
-  list.add(new Tareas(content));
+  list.add(new Tareas(content,id));
   listas();
+  id++;
+  list.limpiar();
   return false;
 }
 
@@ -130,3 +144,4 @@ function listas() {
  
   }
 }
+
