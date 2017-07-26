@@ -1,11 +1,16 @@
+
 .col s12{
     align-items: center;
     align-content: center;
 }
 
 ul li.checked {
-  background: #00796b;
+  background: #26a69a;
   color:aliceblue;
   text-decoration: line-through;
 }
 
+ul{ 
+  margin:40px; 
+  padding:0; 
+}

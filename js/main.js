@@ -1,6 +1,7 @@
 
-function Tareas(title) {
-  this.userId = 1
+function Tareas(title,id) {
+  this.id = id;
+  this.userId = 1;
   this.title = title;
   this.completed = false;
 
@@ -73,16 +74,26 @@ function ToDoList() {
     this.arrDatos.push(tareas);
   }
   this.isChecked = function (event) {
-    if (event.target.tagName === 'LI') {
-      event.target.classList.toggle('checked');
+    
+
+      var valorLista = event.target.textContent;
+      for(var i in this.arrDatos){
+        if(this.arrDatos[i].title == valorLista){
+          this.arrDatos[i].completed = true;
+          if (event.target.tagName === 'LI') {
+          event.target.classList.toggle('checked');
+          console.log(this.arrDatos);
+        }
+      }
+
     }
 
   }
   this.mostrar = function (content) {
     var newLi = document.createElement('li');
-    var checkBox = cb = document.createElement("input");
+    var cb = document.createElement("input");
     cb.type = "checkbox";
-    cb.id = "c1";
+    //cb.id = "c1";
     cb.value = content;
     cb.checked = false;
 
@@ -96,19 +107,25 @@ function ToDoList() {
 
 
   }
+  this.limpiar=function(){
+    document.getElementById("Activity").value =  "";
+  }
 }
 
 var list = new ToDoList();
-
+var  id=11;
 
 listar();
 listas();
 var btnAdd = document.getElementById("btnActivity");
 btnAdd.onclick = function add() {
+ 
   var content = document.getElementById("Activity").value;
   list.mostrar(content);
-  list.add(new Tareas(content));
+  list.add(new Tareas(content,id));
   listas();
+  id++;
+  list.limpiar();
   return false;
 }
 
@@ -125,8 +142,11 @@ function listas() {
   var listas = document.getElementsByTagName("li");
   for (var i in listas) {
     listas[i].onclick = function (event) {
+
       list.isChecked(event);
+     
     }
-    console.log(listas);
+ 
   }
 }
+
