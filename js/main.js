@@ -127,6 +127,6 @@ function listas() {
     listas[i].onclick = function (event) {
       list.isChecked(event);
     }
-    console.log(listas);
+ 
   }
 }
