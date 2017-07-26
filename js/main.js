@@ -74,15 +74,16 @@ function ToDoList() {
     this.arrDatos.push(tareas);
   }
   this.isChecked = function (event) {
-    
+     if (event.target.tagName === 'LI') {
+            event.target.classList.toggle('checked');
 
       var valorLista = event.target.textContent;
       for(var i in this.arrDatos){
         if(this.arrDatos[i].title == valorLista){
           this.arrDatos[i].completed = true;
-          if (event.target.tagName === 'LI') {
-          event.target.classList.toggle('checked');
-          console.log(this.arrDatos);
+          //this.arrDatos[i].repla
+         
+            //console.log(this.arrDatos);
         }
       }
 
@@ -93,7 +94,6 @@ function ToDoList() {
     var newLi = document.createElement('li');
     var cb = document.createElement("input");
     cb.type = "checkbox";
-    //cb.id = "c1";
     cb.value = content;
     cb.checked = false;
 
@@ -121,11 +121,18 @@ var btnAdd = document.getElementById("btnActivity");
 btnAdd.onclick = function add() {
  
   var content = document.getElementById("Activity").value;
-  list.mostrar(content);
-  list.add(new Tareas(content,id));
-  listas();
-  id++;
-  list.limpiar();
+  if(content==""){
+    alert("Debes agregar una actividad");
+  }
+  else{
+    list.mostrar(content);
+    list.add(new Tareas(content,id));
+    listas();
+    id++;
+    list.limpiar();
+
+  }
+
   return false;
 }
 
@@ -137,16 +144,13 @@ function listar() {
   }
 }
 
-
 function listas() {
   var listas = document.getElementsByTagName("li");
   for (var i in listas) {
-    listas[i].onclick = function (event) {
-
-      list.isChecked(event);
+    listas[i].onclick = function (event){
+       list.isChecked(event);
      
     }
- 
   }
 }
 
