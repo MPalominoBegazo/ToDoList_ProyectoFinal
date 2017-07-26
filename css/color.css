@@ -1,3 +1,4 @@
+
 .col s12{
     align-items: center;
     align-content: center;
@@ -10,6 +11,6 @@ ul li.checked {
 }
 
 ul{ 
-  margin:0; 
+  margin:40px; 
   padding:0; 
 }

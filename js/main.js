@@ -74,14 +74,17 @@ function ToDoList() {
     this.arrDatos.push(tareas);
   }
   this.isChecked = function (event) {
-    if (event.target.tagName === 'LI') {
-      event.target.classList.toggle('checked');
+    
 
-      /*for(var i in this.arrDatos){
-        if(this.arrDatos[i].id == event.id){
-          this.arrDatos.completed = true;
+      var valorLista = event.target.textContent;
+      for(var i in this.arrDatos){
+        if(this.arrDatos[i].title == valorLista){
+          this.arrDatos[i].completed = true;
+          if (event.target.tagName === 'LI') {
+          event.target.classList.toggle('checked');
+          console.log(this.arrDatos);
         }
-      }*/
+      }
 
     }
 
@@ -139,7 +142,9 @@ function listas() {
   var listas = document.getElementsByTagName("li");
   for (var i in listas) {
     listas[i].onclick = function (event) {
+
       list.isChecked(event);
+     
     }
  
   }
